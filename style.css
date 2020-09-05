@@ -1,0 +1,20 @@
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(gray, #343a40);
+}
+
+#quizMain {
+    background-color: #343a40;
+    color: #f0f0f0;
+}
+
+#hud {
+    background-color: #353535;
+}
+
+#questions, #answers {
+    color: #343a40;
+}

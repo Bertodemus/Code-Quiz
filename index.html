@@ -18,7 +18,7 @@
 
             <div class="col-md-2">
                 <h6>Timer:</h6>
-                <h6 id="timerText">30 seconds</h6>
+                <h6 id="timerText">60 seconds</h6>
             </div>
 
             <div class="col-md-2">
@@ -32,18 +32,18 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button id="start" type="button" class="btn btn-secondary btn-lg btn-block mt-2">START</button>
+                <button id="startButt" type="button" class="btn btn-secondary btn-lg btn-block mt-2 startFadeIn">START</button>
             </div>
         </div>
         <div class="row">
-            <div id="questions" class="col-md-12 mt-4 text-center d-flex justify-content-center">
+            <div id="questions" class="col-md-12 mt-4 text-center d-flex justify-content-center fadeOut">
                 <div class="card bg-light mb-3 w-75 h-100">
                     <!-- <div class="card-header">
                         This is a place holder... might not need it
                     </div> -->
                     <div class="card-body">
                         <h5 class="card-title">Questions!</h5>
-                        <p class="card-text">Questions will go in here.</p>
+                        <p id="questionCard" class="card-text"></p>
                     </div>
                 </div>
             </div>
@@ -51,46 +51,42 @@
         <hr>
         <div id="answers" class="row mt-4">
             <div class="col-md-3">
-                <div class="card bg-light mb-3">
+                <div id="cardA" class="card bg-light mb-3 fadeOut">
                     <div class="card-header">
-                        A
+                        <button id="buttonA" type="button" class="btn btn-secondary btn-lg btn-block mt-2">A</button>
                     </div>
                     <div class="card-body">
-                        <h5 id="answerA" class="card-title">Answer goes here</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                        <p id="answerA" class="card-text"></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light mb-3">
+                <div id="cardB" class="card bg-light mb-3 fadeOut">
                     <div class="card-header">
-                        B
+                        <button id="buttonB" type="button" class="btn btn-secondary btn-lg btn-block mt-2">B</button>
                     </div>
                     <div class="card-body">
-                        <h5 id="answerB" class="card-title">Answer goes here</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                        <p id="answerB" class="card-text"></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light mb-3">
+                <div id="cardC" class="card bg-light mb-3 fadeOut">
                     <div class="card-header">
-                        C
+                        <button id="buttonC" type="button" class="btn btn-secondary btn-lg btn-block mt-2">C</button>
                     </div>
                     <div class="card-body">
-                        <h5 id="answerC" class="card-title">Answer goes here</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                        <p id="answerC" class="card-text"></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light mb-3">
+                <div id="cardD" class="card bg-light mb-3 fadeOut">
                     <div class="card-header">
-                        D
+                        <button id="buttonD" type="button" class="btn btn-secondary btn-lg btn-block mt-2">D</button>
                     </div>
                     <div class="card-body">
-                        <h5 id="answerD" class="card-title">Answer goes here</h5>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                        <p id="answerD" class="card-text"></p>
                     </div>
                 </div>
             </div>
@@ -103,6 +99,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="JSquestions.js"></script>
+
     
 </body>
 

@@ -18,3 +18,34 @@ body {
 #questions, #answers {
     color: #343a40;
 }
+
+.startFadeIn {
+    position: relative;
+    transform: translateY(120px);
+    z-index: 1;
+    opacity: 100;
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+}
+
+.startFadeOut {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+/* #questions, #cardA, #cardB, #cardC, #cardD { */
+.fadeOut {
+    position: relative;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+}
+
+/* #questions:hover, #cardA:hover,  #cardB:hover,  #cardC:hover, #cardD:hover { */
+.fadeIn {
+    opacity: 100;
+    transform: translateY(0px);
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+}

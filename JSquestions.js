@@ -1,6 +1,7 @@
-var JSquestions = ["What does an array do?", "How do you change background color?", "How do I make a button 'listen' for a click?"];
-var JSanswer0 = ["puts things together"];
-var JSanswer1 = ["eats all your pizza"];
-var JSanswer2 = ["adds a 'break' in your text"];
-var JSanswer3 = ["makes your mother laugh"];
+var QuizQuestions = ["What does an array do?", "How do you change background color?", "How do I make a button 'listen' for a click?"];
+var QuizAnswerA = ["puts things together","answer index 1","answer index 2"];
+var QuizAnswerB = ["eats all your pizza","answer index 1","answer index 2"];
+var QuizAnswerC = ["adds a 'break' in your text","answer index 1","answer index 2"];
+var QuizAnswerD = ["makes your mother laugh","answer index 1","answer index 2"];
 
+var QuizAnswerKey = ["A","C","D"];

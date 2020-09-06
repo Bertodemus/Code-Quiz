@@ -34,54 +34,62 @@ startButt.addEventListener("click", function () {
 //Take the quiz
 buttonA.addEventListener("click", function () {
     if (buttonA.textContent === QuizAnswerKey[questionNext]) {
-        console.log("Answer Correct");
+        AACardSlide.classList.remove("bg-light");
+        AACardSlide.classList.add("bg-success");
     } else {
-        console.log("incorrect answer");
+        AACardSlide.classList.remove("bg-light");
+        AACardSlide.classList.add("bg-danger");
         timeLeft = timeLeft - 5;
     }
-    deckFadeOut();
+    setTimeout(deckFadeOut,300);
     questionNext++;
-    loadQuiz();
-    setTimeout(deckFadeIn,500);
+    setTimeout(deckFadeIn,800);
+    setTimeout(loadQuiz,850);
 });
 
 buttonB.addEventListener("click", function () {
     if (buttonB.textContent === QuizAnswerKey[questionNext]) {
-        console.log("Answer Correct");
+        ABCardSlide.classList.remove("bg-light");
+        ABCardSlide.classList.add("bg-success");
     } else {
-        console.log("incorrect answer");
+        ABCardSlide.classList.remove("bg-light");
+        ABCardSlide.classList.add("bg-danger");
         timeLeft = timeLeft - 5;
     }
-    deckFadeOut();
+    setTimeout(deckFadeOut,300);
     questionNext++;
-    loadQuiz();
-    setTimeout(deckFadeIn,500);
+    setTimeout(deckFadeIn,800);
+    setTimeout(loadQuiz,850);
 });
 
 buttonC.addEventListener("click", function () {
     if (buttonC.textContent === QuizAnswerKey[questionNext]) {
-        console.log("Answer Correct");
+        ACCardSlide.classList.remove("bg-light");
+        ACCardSlide.classList.add("bg-success");
     } else {
-        console.log("incorrect answer");
+        ACCardSlide.classList.remove("bg-light");
+        ACCardSlide.classList.add("bg-danger");
         timeLeft = timeLeft - 5;
     }
-    deckFadeOut();
+    setTimeout(deckFadeOut,300);
     questionNext++;
-    loadQuiz();
-    setTimeout(deckFadeIn,500);
+    setTimeout(deckFadeIn,800);
+    setTimeout(loadQuiz,850);
 });
 
 buttonD.addEventListener("click", function () {
     if (buttonD.textContent === QuizAnswerKey[questionNext]) {
-        console.log("Answer Correct");
+        ADCardSlide.classList.remove("bg-light");
+        ADCardSlide.classList.add("bg-success");
     } else {
-        console.log("incorrect answer");
+        ADCardSlide.classList.remove("bg-light");
+        ADCardSlide.classList.add("bg-danger");
         timeLeft = timeLeft - 5;
     }
-    deckFadeOut();
+    setTimeout(deckFadeOut,300);
     questionNext++;
-    loadQuiz();
-    setTimeout(deckFadeIn,500);
+    setTimeout(deckFadeIn,800);
+    setTimeout(loadQuiz,850);
 });
 
 //Timing functions
@@ -100,9 +108,25 @@ function startTimer() {
 //Card Deck control
 function deckFadeIn() {
     QCardSlide.classList.add("fadeIn");
+
+    AACardSlide.classList.remove("bg-danger");
+    AACardSlide.classList.remove("bg-success");
+    AACardSlide.classList.add("bg-light");
     AACardSlide.classList.add("fadeIn");
+
+    ABCardSlide.classList.remove("bg-danger");
+    ABCardSlide.classList.remove("bg-success");
+    ABCardSlide.classList.add("bg-light");
     ABCardSlide.classList.add("fadeIn");
+
+    ACCardSlide.classList.remove("bg-danger");
+    ACCardSlide.classList.remove("bg-success");
+    ACCardSlide.classList.add("bg-light");
     ACCardSlide.classList.add("fadeIn");
+
+    ADCardSlide.classList.remove("bg-danger");
+    ADCardSlide.classList.remove("bg-success");
+    ADCardSlide.classList.add("bg-light");
     ADCardSlide.classList.add("fadeIn");
 }
 

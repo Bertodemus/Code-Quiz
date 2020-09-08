@@ -30,7 +30,8 @@ var ADCardSlide = document.querySelector("#cardD");
 // var scoreEntryModal = document.querySelector("#scoreEntryModal");
 var scoreName = document.querySelector("#scoreName");
 var scoreEntryText = document.querySelector("#scoreEntryText");
-var scoreNameButt = document.querySelector("#scoreNameButt");
+var scoreNameSaveButt = document.querySelector("#scoreNameSaveButt");
+// var scoreNameCloseButt = document.querySelector("#scoreNameCloseButt");
 var scoreModalList = document.querySelector("#scoreModalList");
 
 QuizQuestions = JSQuizQuestions;
@@ -41,12 +42,17 @@ QuizAnswerD = JSQuizAnswerD;
 QuizAnswerKey = JSQuizAnswerKey;
 
 //Name entry at Game Over
-scoreNameButt.addEventListener("click", function() {
-      var item = document.createElement("p");
-      item.textContent = scoreName.value + " " + score.toString() + " Points";
-      console.log(scoreName.value);
-      scoreModalList.append(item);
+scoreNameSaveButt.addEventListener("click", function() {
+    var item = document.createElement("p");
+    item.textContent = scoreName.value + " " + score.toString() + " Points";
+    console.log(scoreName.value);
+    scoreModalList.append(item);
+    // MCardSlide.classList.remove("startFadeOut");
 });
+
+// scoreNameCloseButt.addEventListener("click", function() {
+//     MCardSlide.classList.remove("startFadeOut");
+// });
 
 //Quiz Options
 QTmenu1.addEventListener("click", function () {
@@ -161,12 +167,13 @@ buttonD.addEventListener("click", function () {
 //Timing functions
 function startTimer() {
     var clock = setInterval( function () {
-        timeLeft--;
-        timerText.textContent = timeLeft.toString() + " seconds";
-        console.log(timeLeft);
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             clearInterval(clock);
-            gameOver(); 
+            gameOver();
+        } else { 
+        timeLeft--;
+        timerText.textContent = timeLeft.toString();
+        console.log(timeLeft);
         }
     }, 1000);
 }
@@ -206,21 +213,27 @@ function deckFadeOut() {
 
 //Quiz functions
 function loadQuiz() {
-        questionCard.textContent = QuizQuestions[questionNext];
-        answerA.textContent = QuizAnswerA[questionNext];
-        answerB.textContent = QuizAnswerB[questionNext];
-        answerC.textContent = QuizAnswerC[questionNext];
-        answerD.textContent = QuizAnswerD[questionNext];
+    questionCard.textContent = QuizQuestions[questionNext];
+    answerA.textContent = QuizAnswerA[questionNext];
+    answerB.textContent = QuizAnswerB[questionNext];
+    answerC.textContent = QuizAnswerC[questionNext];
+    answerD.textContent = QuizAnswerD[questionNext];
 }
 
 //Game Over functions
 function gameOver() {
     scoreEntryText.textContent = score.toString();
-    setTimeout(deckFadeOut,300);
+    setTimeout(deckFadeOut,700);
     questionNext = 0;
     timeLeft = 30;
-    scoreBoard.textContent = "-----";
-    MCardSlide.classList.remove("startFadeOut");
+    scoreBoard.textContent = "0";
+    timerText.textContent = "0"; 
+    setTimeout(loadStartMenu,1500);
+    // MCardSlide.classList.remove("startFadeOut");
     $('#scoreEntryModal').modal('show');
     console.log("GAME OVER");
+}
+
+function loadStartMenu() {
+    MCardSlide.classList.remove("startFadeOut");
 }

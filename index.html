@@ -10,22 +10,22 @@
 <body>
     <main id="quizMain" class="container">
 
-        <div id="hud" class="row mt-2">
+        <div id="hud" class="row mt-2 pr-2">
 
-            <div class="col-md-5 text-left">
+            <div class="col-5 text-left">
                 <h4>addEventQuiz</h4>
             </div>
 
-            <div class="col-md-3 text-center">
+            <div class="col-3 text-left">
                 <p>Quiz:&nbsp;<span id="QTypeText">Javascript</span></p>
             </div>
 
-            <div class="col-md-2 text-center">
-                <p>Timer:&nbsp;<span id="timerText">0 seconds</span></p>
+            <div class="col-2 text-right">
+                <p>Time:&nbsp;<span id="timerText">0</span></p>
             </div>
 
-            <div class="col-md-2 text-center">
-                <p>Score:&nbsp;<span id="scoreText">-----</span></p>
+            <div class="col-2 text-left">
+                <p>Score:&nbsp;<span id="scoreText">0</span></p>
             </div>
 
         </div>
@@ -151,8 +151,8 @@
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button id="scoreNameButt" type="button" class="btn btn-secondary" data-dismiss="modal">Save Changes</button>
+              <button id="scoreNameCloseButt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button id="scoreNameSaveButt" type="button" class="btn btn-secondary" data-dismiss="modal">Save Changes</button>
             </div>
           </div>
         </div>

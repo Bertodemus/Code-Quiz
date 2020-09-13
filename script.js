@@ -1,10 +1,11 @@
 //Variable Assignments
 var startButt = document.querySelector("#startButt");
 var timerText = document.querySelector("#timerText");
-var timeLeft = 30;
+var timeLeft = 60;
 var scoreBoard = document.querySelector("#scoreText");
 var score = 0;
 var questionNext = 0;
+var quizTheme = "js";
 var QTmenu1 = document.querySelector("#QTmenu1");
 var QTmenu2 = document.querySelector("#QTmenu2");
 var QTmenu3 = document.querySelector("#QTmenu3");
@@ -18,7 +19,7 @@ var buttonA = document.querySelector("#buttonA");
 var buttonB = document.querySelector("#buttonB");
 var buttonC = document.querySelector("#buttonC");
 var buttonD = document.querySelector("#buttonD");
-var quizScript = document.querySelector("#quizScript");
+// var quizScript = document.querySelector("#quizScript");
     //variables for the transitions
 var MCardSlide = document.querySelector("#menuCard");
 var QCardSlide = document.querySelector("#questions");
@@ -34,6 +35,7 @@ var scoreNameSaveButt = document.querySelector("#scoreNameSaveButt");
 // var scoreNameCloseButt = document.querySelector("#scoreNameCloseButt");
 var scoreModalList = document.querySelector("#scoreModalList");
 
+//Initialize page - sets the first quiz to javascript
 QuizQuestions = JSQuizQuestions;
 QuizAnswerA = JSQuizAnswerA;
 QuizAnswerB = JSQuizAnswerB;
@@ -44,19 +46,30 @@ QuizAnswerKey = JSQuizAnswerKey;
 //Name entry at Game Over
 scoreNameSaveButt.addEventListener("click", function() {
     var item = document.createElement("p");
-    item.textContent = scoreName.value + " " + score.toString() + " Points";
-    console.log(scoreName.value);
+    var badge = document.createElement("img");
+    if (quizTheme === "donuts") {
+    item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+    item.prepend(badge);
+    badge.setAttribute("src", "images/donutbadge.png")
     scoreModalList.append(item);
-    // MCardSlide.classList.remove("startFadeOut");
+    } else if (quizTheme === "css") {
+        item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+        item.prepend(badge);
+        badge.setAttribute("src", "images/cssbadge.png")
+        scoreModalList.append(item);
+    } else if (quizTheme === "js") {
+        item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+        item.prepend(badge);
+        badge.setAttribute("src", "images/jsbadge.png")
+        scoreModalList.append(item);
+    }
 });
-
-// scoreNameCloseButt.addEventListener("click", function() {
-//     MCardSlide.classList.remove("startFadeOut");
-// });
 
 //Quiz Options
 QTmenu1.addEventListener("click", function () {
-    QText.textContent = "Javascript";
+    quizTheme = "js";
+    document.body.style.backgroundImage = "url('./images/JSclip.png')";
+    QText.textContent = "Flex those JS muscles!";
     QuizQuestions = JSQuizQuestions;
     QuizAnswerA = JSQuizAnswerA;
     QuizAnswerB = JSQuizAnswerB;
@@ -66,7 +79,9 @@ QTmenu1.addEventListener("click", function () {
 });
 
 QTmenu2.addEventListener("click", function () {
-    QText.textContent = "CSS";
+    quizTheme = "css";
+    document.body.style.backgroundImage = "url('./images/CSSclip.png')";
+    QText.textContent = "Let's mess with CSS!";
     QuizQuestions = CSSQuizQuestions;
     QuizAnswerA = CSSQuizAnswerA;
     QuizAnswerB = CSSQuizAnswerB;
@@ -76,7 +91,9 @@ QTmenu2.addEventListener("click", function () {
 });
 
 QTmenu3.addEventListener("click", function () {
-    QText.textContent = "DONUTS!";
+    quizTheme = "donuts";
+    document.body.style.backgroundImage = "url('./images/donutclip.png')";
+    QText.textContent = "Go nuts for DONUTS!";
     QuizQuestions = DTQuizQuestions;
     QuizAnswerA = DTQuizAnswerA;
     QuizAnswerB = DTQuizAnswerB;
@@ -96,73 +113,28 @@ startButt.addEventListener("click", function () {
 });
 
 //Take the quiz
-buttonA.addEventListener("click", function () {
-    if (buttonA.textContent === QuizAnswerKey[questionNext]) {
-        AACardSlide.classList.remove("bg-light");
-        AACardSlide.classList.add("bg-success");
-        score = score + 5;
-        scoreBoard.textContent = score.toString();
-    } else {
-        AACardSlide.classList.remove("bg-light");
-        AACardSlide.classList.add("bg-danger");
-        timeLeft = timeLeft - 5;
-    }
-    setTimeout(deckFadeOut,300);
-    questionNext++;
-    setTimeout(deckFadeIn,800);
-    setTimeout(loadQuiz,850);
-});
+buttonA.addEventListener("click",answerPick);
+buttonB.addEventListener("click",answerPick);
+buttonC.addEventListener("click",answerPick);
+buttonD.addEventListener("click",answerPick);
 
-buttonB.addEventListener("click", function () {
-    if (buttonB.textContent === QuizAnswerKey[questionNext]) {
-        ABCardSlide.classList.remove("bg-light");
-        ABCardSlide.classList.add("bg-success");
+function answerPick() {
+    if (this.textContent === QuizAnswerKey[questionNext]) {
+        this.parentElement.classList.remove("bg-light");
+        this.parentElement.classList.add("bg-success");
         score = score + 5;
         scoreBoard.textContent = score.toString();
     } else {
-        ABCardSlide.classList.remove("bg-light");
-        ABCardSlide.classList.add("bg-danger");
+        this.parentElement.classList.remove("bg-light");
+        this.parentElement.classList.add("bg-danger");
         timeLeft = timeLeft - 5;
     }
-    setTimeout(deckFadeOut,300);
-    questionNext++;
-    setTimeout(deckFadeIn,800);
-    setTimeout(loadQuiz,850);
-});
 
-buttonC.addEventListener("click", function () {
-    if (buttonC.textContent === QuizAnswerKey[questionNext]) {
-        ACCardSlide.classList.remove("bg-light");
-        ACCardSlide.classList.add("bg-success");
-        score = score + 5;
-        scoreBoard.textContent = score.toString();
-    } else {
-        ACCardSlide.classList.remove("bg-light");
-        ACCardSlide.classList.add("bg-danger");
-        timeLeft = timeLeft - 5;
-    }
     setTimeout(deckFadeOut,300);
     questionNext++;
     setTimeout(deckFadeIn,800);
     setTimeout(loadQuiz,850);
-});
-
-buttonD.addEventListener("click", function () {
-    if (buttonD.textContent === QuizAnswerKey[questionNext]) {
-        ADCardSlide.classList.remove("bg-light");
-        ADCardSlide.classList.add("bg-success");
-        score = score + 5;
-        scoreBoard.textContent = score.toString();
-    } else {
-        ADCardSlide.classList.remove("bg-light");
-        ADCardSlide.classList.add("bg-danger");
-        timeLeft = timeLeft - 5;
-    }
-    setTimeout(deckFadeOut,300);
-    questionNext++;
-    setTimeout(deckFadeIn,800);
-    setTimeout(loadQuiz,850);
-});
+} 
 
 //Timing functions
 function startTimer() {
@@ -173,7 +145,6 @@ function startTimer() {
         } else { 
         timeLeft--;
         timerText.textContent = timeLeft.toString();
-        console.log(timeLeft);
         }
     }, 1000);
 }
@@ -211,7 +182,7 @@ function deckFadeOut() {
     ADCardSlide.classList.remove("fadeIn");
 }
 
-//Quiz functions
+//Quiz load functions
 function loadQuiz() {
     questionCard.textContent = QuizQuestions[questionNext];
     answerA.textContent = QuizAnswerA[questionNext];
@@ -222,18 +193,18 @@ function loadQuiz() {
 
 //Game Over functions
 function gameOver() {
-    scoreEntryText.textContent = score.toString();
-    setTimeout(deckFadeOut,700);
+    scoreName.value = "";
+    scoreEntryText.textContent = "You scored " + score.toString() + " points!";
+    setTimeout(deckFadeOut,1000);
     questionNext = 0;
-    timeLeft = 30;
+    timeLeft = 60;
     scoreBoard.textContent = "0";
     timerText.textContent = "0"; 
     setTimeout(loadStartMenu,1500);
-    // MCardSlide.classList.remove("startFadeOut");
     $('#scoreEntryModal').modal('show');
-    console.log("GAME OVER");
 }
 
+// This function is used to reload the main menu, with a timeout delay
 function loadStartMenu() {
     MCardSlide.classList.remove("startFadeOut");
 }

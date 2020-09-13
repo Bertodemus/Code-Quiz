@@ -6,13 +6,13 @@ var JSQuizAnswerD = ["<pizza>","<script name ='ABC.js'>","msg('I love pancakes')
 
 var JSQuizAnswerKey = ["B","A","C","A","A","D","C","B","C","D"];
 
-var CSSQuizQuestions = ["What does CSS stand for?", "How to you change background color?", "How do you set margin on top?"];
-var CSSQuizAnswerA = ["cascading style sheet","collapse system strudel","Css 3"];
-var CSSQuizAnswerB = ["ebackground color","answer index 1","answer index 2"];
-var CSSQuizAnswerC = ["collapse system strudel","answer index 1","answer index 2"];
-var CSSQuizAnswerD = ["makes your mother cry","answer index 1","answer index 2"];
+var CSSQuizQuestions = ["What does CSS stand for?","What is the correct HTML for referring to an external style sheet?","Which HTML attirbute is used to define inline styles?","What is correct CSS syntax?","How do you comment code in a CSS file?","Which property changes background color?","What property controls text size?","Which CSS property changes the font of an element?","How do you adjust the right margin of an element?","How do you select an element with an id of 'pizzaTop'?"];
+var CSSQuizAnswerA = ["cascading style sheet","<linkstyle = style.css>","value","body:color=black;","''","background-color","text-size","font-font","margin-right","pizzaTop"];
+var CSSQuizAnswerB = ["background color","<style src='style.css'>","class","body {color: black;}","/*  */","bkgColor","text-style","font-src","padding-right","#pizzaTop"];
+var CSSQuizAnswerC = ["collapse system strudel","<stylesheet>style.css</stylesheet>","style","{body:color=black;}","// //","color","font-style","font-family","margin-top",".pizzaTop"];
+var CSSQuizAnswerD = ["cascading sorting sheet","<link rel='stylesheet' type='text/css' href='style.css'>","styles","{body;color:black;}","//","b-groundcolor","font-size","fonr-weight","maple syrup","id-pizzaTop"];
 
-var CSSQuizAnswerKey = ["A","B","A"];
+var CSSQuizAnswerKey = ["A","D","C","B","B","A","D","C","A","B"];
 
 var DTQuizQuestions = ["How many doughnuts are made in the U.S. each year?","How many people, in America, have the last name of 'doughnut' or 'donut'?","What author waxed poetic about doughnuts?","The earliest origins to the modern doughnuts are generally traced back to the Dutch settlers in early New York. What other name did the doughnuts go by?","The word 'nut' in doughnut was used in it's earlier sense. What did 'nut' refer to?","In what year was the first known printed use of the word 'donut'?","The french had a variant their version of the doughnut, which was called 'pets de nonne', which translates to what?","The doughnut shop 'VooDoo Doughnut' was famous for it's absurd flavors. What was on one of it's 'medicinal' donuts?","A 19th-century New England ship captain claims to have invented the hole in doughnuts. Who was he?","According to anthropologist Paul R. Mullins, the first cookbook mentioning doughnuts was in what year?"];
 var DTQuizAnswerA = ["200,000","20","Mark Twain","Dow nuts","small round cake or cookie","1900","No pets","cheap weed and applesauce","Black Beard","1779"];

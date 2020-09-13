@@ -1,7 +1,7 @@
 //Variable Assignments
 var startButt = document.querySelector("#startButt");
 var timerText = document.querySelector("#timerText");
-var timeLeft = 60;
+var timeLeft = 45;
 var scoreBoard = document.querySelector("#scoreText");
 var score = 0;
 var questionNext = 0;
@@ -197,7 +197,7 @@ function gameOver() {
     scoreEntryText.textContent = "You scored " + score.toString() + " points!";
     setTimeout(deckFadeOut,1000);
     questionNext = 0;
-    timeLeft = 60;
+    timeLeft = 45;
     scoreBoard.textContent = "0";
     timerText.textContent = "0"; 
     setTimeout(loadStartMenu,1500);

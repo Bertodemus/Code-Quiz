@@ -34,7 +34,44 @@ var scoreEntryText = document.querySelector("#scoreEntryText");
 var scoreNameSaveButt = document.querySelector("#scoreNameSaveButt");
 // var scoreNameCloseButt = document.querySelector("#scoreNameCloseButt");
 var scoreModalList = document.querySelector("#scoreModalList");
+var clearScore = document.querySelector("#clearScoreButt");
 
+// Stored Data assignments
+var players = [];
+
+initScores();
+
+clearScore.addEventListener("click", function(){
+    localStorage.clear();
+    scoreModalList.innerHTML = "";
+});
+
+
+function initScores() {
+    // Get stored todos from localStorage
+    // Parsing the JSON string to an object
+    var storedPlayers = JSON.parse(localStorage.getItem("players"));
+    // If players were retrieved from localStorage, update the players array to it
+    if (storedPlayers !== null) {
+      players = storedPlayers;
+    }
+      // Render todos to the DOM
+    renderPlayers();
+  }
+
+  function renderPlayers() {
+    // Clear scoreModalList element
+    scoreModalList.innerHTML = "";
+  
+    // Render a new p for each player
+    for (var i = 0; i < players.length; i++) {
+        var player = players[i];
+        var dom = new DOMParser()
+        .parseFromString(player,'text/html');
+        scoreModalList.append(dom.body.firstElementChild);
+    }
+  }
+ 
 //Initialize page - sets the first quiz to javascript
 QuizQuestions = JSQuizQuestions;
 QuizAnswerA = JSQuizAnswerA;
@@ -48,20 +85,26 @@ scoreNameSaveButt.addEventListener("click", function() {
     var item = document.createElement("p");
     var badge = document.createElement("img");
     if (quizTheme === "donuts") {
-    item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+    item.textContent = " - " + scoreName.value.trim() + " - " + score.toString() + " Points";
     item.prepend(badge);
     badge.setAttribute("src", "images/donutbadge.png")
     scoreModalList.append(item);
+    players.push(item.outerHTML);
+    localStorage.setItem("players",JSON.stringify(players));
     } else if (quizTheme === "css") {
-        item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+        item.textContent = " - " + scoreName.value.trim() + " - " + score.toString() + " Points";
         item.prepend(badge);
         badge.setAttribute("src", "images/cssbadge.png")
         scoreModalList.append(item);
+        players.push(item.outerHTML);
+        localStorage.setItem("players",JSON.stringify(players));
     } else if (quizTheme === "js") {
-        item.textContent = " - " + scoreName.value + " - " + score.toString() + " Points";
+        item.textContent = " - " + scoreName.value.trim() + " - " + score.toString() + " Points";
         item.prepend(badge);
         badge.setAttribute("src", "images/jsbadge.png")
         scoreModalList.append(item);
+        players.push(item.outerHTML);
+        localStorage.setItem("players",JSON.stringify(players));
     }
 });
 
@@ -130,13 +173,20 @@ function answerPick() {
         timeLeft = timeLeft - 5;
     }
 
-    setTimeout(deckFadeOut,300);
-    questionNext++;
-    setTimeout(deckFadeIn,800);
-    setTimeout(loadQuiz,850);
+    if (timeLeft <= 0) {
+        setTimeout(deckFadeOut,300);
+    } else if (questionNext === 9) {
+        setTimeout(deckFadeOut,300);
+        timeLeft = 0;
+    } else {
+        setTimeout(deckFadeOut,300);
+        questionNext++;
+        setTimeout(deckFadeIn,800);
+        setTimeout(loadQuiz,850);
+    }
 } 
 
-//Timing functions
+//Timing function
 function startTimer() {
     var clock = setInterval( function () {
         if (timeLeft <= 0) {
@@ -195,12 +245,12 @@ function loadQuiz() {
 function gameOver() {
     scoreName.value = "";
     scoreEntryText.textContent = "You scored " + score.toString() + " points!";
-    setTimeout(deckFadeOut,1000);
+    setTimeout(deckFadeOut,500);
     questionNext = 0;
     timeLeft = 45;
     scoreBoard.textContent = "0";
     timerText.textContent = "0"; 
-    setTimeout(loadStartMenu,1500);
+    setTimeout(loadStartMenu,1000);
     $('#scoreEntryModal').modal('show');
 }
 

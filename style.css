@@ -6,15 +6,14 @@ body {
     background-repeat: none;
     background-position: bottom;
     background-color: #1e1e1e;
-
-    /* background-image: linear-gradient(#343a40, #000000); */
     background-image: url(./images/JSclip.png);
-
 }
 
 #quizMain {
     background-color: #343a4000;
     color: #f0f0f0;
+    max-width: 900px;
+    min-width: 400px;
 }
 
 .hud {

@@ -112,7 +112,7 @@ scoreNameSaveButt.addEventListener("click", function() {
 QTmenu1.addEventListener("click", function () {
     quizTheme = "js";
     document.body.style.backgroundImage = "url('./images/JSclip.png')";
-    QText.textContent = "JS Gauntlet";
+    QText.textContent = "JS Gauntlet!";
     QuizQuestions = JSQuizQuestions;
     QuizAnswerA = JSQuizAnswerA;
     QuizAnswerB = JSQuizAnswerB;

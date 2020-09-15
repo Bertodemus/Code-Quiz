@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>addEventQuiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Overall bootstrap grid -->
     <main id="quizMain" class="container">
-
+        <!-- HUD data and "scores" button -->
         <div class="row hud">
             <div class="col-12 text-center">
                 <h1>addEventQuiz</h1>
             </div>
         </div>
-
         <div class="row hud">
             <div class="col-1"></div>
             <div class="col-3 text-left">
@@ -30,6 +31,7 @@
             </div>
             <div class="col-1"></div>
         </div>
+        <!-- Main menu with Quiz choice options and "start" button -->
         <div id="menuRow" class="row">
             <div class="col-md-12 d-flex justify-content-center">
                 <div id="menuCard" class="card mt-2 w-75 text-center startFadeIn">
@@ -51,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <!-- Overall question and answer cards -->
         <div class="row">
             <div id="questions" class="col-md-12 text-center d-flex justify-content-center fadeOut">
                 <div class="card bg-light mb-3 w-75 h-100">
@@ -96,7 +99,6 @@
             </div>
         </div>
     </main>
-
     <!-- Score Show Modal -->
     <div class="modal fade" id="scoresModal" tabindex="-1" role="dialog" aria-labelledby="scoresModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -112,7 +114,6 @@
             </div>
         </div>
     </div>
-
     <!-- Score Entry Modal -->
     <div class="modal fade" id="scoreEntryModal" tabindex="-1" role="dialog" aria-labelledby="scoresEntryModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -134,14 +135,12 @@
             </div>
         </div>
     </div>
-
+    <!-- Links to script files -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="JSquestions.js"></script>
-    <script src="script.js"></script>
-
-    
+    <script src="script.js"></script>   
 </body>
 
 </html>

@@ -1,16 +1,15 @@
-//Variable Assignments
+// Variable Assignments
 var startButt = document.querySelector("#startButt");
-var timerText = document.querySelector("#timerText");
 var timeLeft = 45;
-var scoreBoard = document.querySelector("#scoreText");
+var timerText = document.querySelector("#timerText");
 var score = 0;
+var scoreBoard = document.querySelector("#scoreText");
 var questionNext = 0;
 var quizTheme = "js";
+var QText = document.querySelector("#QTypeText");
 var QTmenu1 = document.querySelector("#QTmenu1");
 var QTmenu2 = document.querySelector("#QTmenu2");
 var QTmenu3 = document.querySelector("#QTmenu3");
-var QText = document.querySelector("#QTypeText");
-var questionCard = document.querySelector("#questionCard");
 var answerA = document.querySelector("#answerA");
 var answerB = document.querySelector("#answerB");
 var answerC = document.querySelector("#answerC");
@@ -19,71 +18,59 @@ var buttonA = document.querySelector("#buttonA");
 var buttonB = document.querySelector("#buttonB");
 var buttonC = document.querySelector("#buttonC");
 var buttonD = document.querySelector("#buttonD");
-// var quizScript = document.querySelector("#quizScript");
-    //variables for the transitions
+var questionCard = document.querySelector("#questionCard");
+    // Variables for the card transitions
 var MCardSlide = document.querySelector("#menuCard");
 var QCardSlide = document.querySelector("#questions");
 var AACardSlide = document.querySelector("#cardA");
 var ABCardSlide = document.querySelector("#cardB");
 var ACCardSlide = document.querySelector("#cardC");
 var ADCardSlide = document.querySelector("#cardD");
-    //Score array
-// var scoreEntryModal = document.querySelector("#scoreEntryModal");
+    // Variable for the Score keeping and modals
+var players = [];
 var scoreName = document.querySelector("#scoreName");
+var clearScore = document.querySelector("#clearScoreButt");
 var scoreEntryText = document.querySelector("#scoreEntryText");
 var scoreNameSaveButt = document.querySelector("#scoreNameSaveButt");
-// var scoreNameCloseButt = document.querySelector("#scoreNameCloseButt");
 var scoreModalList = document.querySelector("#scoreModalList");
-var clearScore = document.querySelector("#clearScoreButt");
 
-// Stored Data assignments
-var players = [];
-
+// Score presentation and data management
+    // Function for initializing the "scores" data
 initScores();
 
+    // EventListener for clearing the locally stored scores
 clearScore.addEventListener("click", function(){
     localStorage.clear();
     scoreModalList.innerHTML = "";
 });
 
-
+    // Initialization function
 function initScores() {
-    // Get stored todos from localStorage
-    // Parsing the JSON string to an object
     var storedPlayers = JSON.parse(localStorage.getItem("players"));
-    // If players were retrieved from localStorage, update the players array to it
+    
     if (storedPlayers !== null) {
       players = storedPlayers;
     }
-      // Render todos to the DOM
-    renderPlayers();
-  }
 
-  function renderPlayers() {
-    // Clear scoreModalList element
+    renderPlayers();
+}
+
+  // Function for rendering the data to the scoreboard
+function renderPlayers() {
     scoreModalList.innerHTML = "";
-  
-    // Render a new p for each player
     for (var i = 0; i < players.length; i++) {
         var player = players[i];
         var dom = new DOMParser()
         .parseFromString(player,'text/html');
         scoreModalList.append(dom.body.firstElementChild);
     }
-  }
- 
-//Initialize page - sets the first quiz to javascript
-QuizQuestions = JSQuizQuestions;
-QuizAnswerA = JSQuizAnswerA;
-QuizAnswerB = JSQuizAnswerB;
-QuizAnswerC = JSQuizAnswerC;
-QuizAnswerD = JSQuizAnswerD;
-QuizAnswerKey = JSQuizAnswerKey;
+}
 
-//Name entry at Game Over
+    // Name entry at Game Over
 scoreNameSaveButt.addEventListener("click", function() {
     var item = document.createElement("p");
     var badge = document.createElement("img");
+
     if (quizTheme === "donuts") {
     item.textContent = " - " + scoreName.value.trim() + " - " + score.toString() + " Points";
     item.prepend(badge);
@@ -106,9 +93,19 @@ scoreNameSaveButt.addEventListener("click", function() {
         players.push(item.outerHTML);
         localStorage.setItem("players",JSON.stringify(players));
     }
+
 });
 
-//Quiz Options
+// Quiz presentation and data management
+    // Sets the JavaSCript quiz as the default quiz
+QuizQuestions = JSQuizQuestions;
+QuizAnswerA = JSQuizAnswerA;
+QuizAnswerB = JSQuizAnswerB;
+QuizAnswerC = JSQuizAnswerC;
+QuizAnswerD = JSQuizAnswerD;
+QuizAnswerKey = JSQuizAnswerKey;
+
+    // Quiz Options for determining which set of questions to ask
 QTmenu1.addEventListener("click", function () {
     quizTheme = "js";
     document.body.style.backgroundImage = "url('./images/JSclip.png')";
@@ -145,7 +142,7 @@ QTmenu3.addEventListener("click", function () {
     QuizAnswerKey = DTQuizAnswerKey;
 });
 
-//Start the quiz
+    // Start the quiz
 startButt.addEventListener("click", function () {
     score = 0;
     MCardSlide.classList.add("startFadeOut");
@@ -155,12 +152,12 @@ startButt.addEventListener("click", function () {
     loadQuiz();
 });
 
-//Take the quiz
+    // EventListeners for the answer button
 buttonA.addEventListener("click",answerPick);
 buttonB.addEventListener("click",answerPick);
 buttonC.addEventListener("click",answerPick);
 buttonD.addEventListener("click",answerPick);
-
+    // Function for answer button actions
 function answerPick() {
     if (this.textContent === QuizAnswerKey[questionNext]) {
         this.parentElement.classList.remove("bg-light");
@@ -186,20 +183,7 @@ function answerPick() {
     }
 } 
 
-//Timing function
-function startTimer() {
-    var clock = setInterval( function () {
-        if (timeLeft <= 0) {
-            clearInterval(clock);
-            gameOver();
-        } else { 
-        timeLeft--;
-        timerText.textContent = timeLeft.toString();
-        }
-    }, 1000);
-}
-
-//Card Deck control
+    // Answer transitions and correct/incorrect color responses
 function deckFadeIn() {
     QCardSlide.classList.add("fadeIn");
 
@@ -232,7 +216,7 @@ function deckFadeOut() {
     ADCardSlide.classList.remove("fadeIn");
 }
 
-//Quiz load functions
+    // Quiz load function
 function loadQuiz() {
     questionCard.textContent = QuizQuestions[questionNext];
     answerA.textContent = QuizAnswerA[questionNext];
@@ -241,7 +225,22 @@ function loadQuiz() {
     answerD.textContent = QuizAnswerD[questionNext];
 }
 
-//Game Over functions
+// Timing control function
+function startTimer() {
+    var clock = setInterval( function () {
+
+        if (timeLeft <= 0) {
+            clearInterval(clock);
+            gameOver();
+        } else { 
+        timeLeft--;
+        timerText.textContent = timeLeft.toString();
+        }
+
+    }, 1000);
+}
+
+// Game Over functions
 function gameOver() {
     scoreName.value = "";
     scoreEntryText.textContent = "You scored " + score.toString() + " points!";

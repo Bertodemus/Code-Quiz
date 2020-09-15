@@ -4,7 +4,7 @@ This is a timed quiz with multiple choice questions. This app features HTML and 
 
 ## Overview
 
-* Quiz design consists of: `index.html`, `style.css`, `script.js`, and `JSquestions.js`.
+* Quiz design consists of: `index.html`, `style.css`, `script.js`, and `JSquestions.js`
 * Bootstrap 4 was utilized to create the layout
 
 ## Quiz Description
@@ -17,7 +17,7 @@ This is a timed quiz with multiple choice questions. This app features HTML and 
     * Game Over Conditions:
         * Timer reaches `0`
         * User answers all the questions
-    * After a Game Over condition is met the User is allowed to enter their name, which is then stored.
+    * After a Game Over condition is met the User is allowed to enter their name, which is then stored
 
 * Select `Scores` to view stored scores at any time
 * Select `CLear` to delete locally stored scores
@@ -25,6 +25,7 @@ This is a timed quiz with multiple choice questions. This app features HTML and 
 ## Bonus Features
 
 * Three selectable sets of questions: `JavaScript`, `CSS`, `Donuts`
+* The background changes according to what question set is selected
 * Stored users are assigned a `Badge` that is based on which quiz the user took
 
 ### Screenshots
